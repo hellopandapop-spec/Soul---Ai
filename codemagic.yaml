@@ -1,0 +1,20 @@
+workflows:
+  android-workflow:
+    name: Android Debug APK Build
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - android-signing
+      vars:
+        JAVA_VERSION: "17"
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+      - name: Build Android APK
+        script: |
+          gradle :app:assembleDebug
+    artifacts:
+      - app/build/outputs/apk/debug/*.apk
+      
