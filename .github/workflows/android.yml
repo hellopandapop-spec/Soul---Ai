@@ -23,16 +23,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Move to Clean Directory and Build
-        run: |
-          mkdir -p /home/runner/work/clean-build/app
-          cp -r * /home/runner/work/clean-build/ 2>/dev/null || true
-          cd /home/runner/work/clean-build
-          sed -i 's/rootProject.name = .*/rootProject.name = "clean-build"/' settings.gradle.kts || true
-          gradle :app:assembleDebug --no-daemon
+      - name: Build APK with Gradle
+        run: gradle :app:assembleDebug
 
-      - name: Find and Upload APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: /home/runner/work/clean-build/app/build/outputs/apk/debug/*.apk
+          path: "**/build/outputs/apk/debug/*.apk"
