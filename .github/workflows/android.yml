@@ -23,7 +23,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Create Expected Directory Structure
+      - name: Create Directory Structure
         run: |
           mkdir -p /home/runner/work/Soul---Ai/Soul---Ai
           cp -r ${{ github.workspace }}/* /home/runner/work/Soul---Ai/Soul---Ai/ 2>/dev/null || true
@@ -32,9 +32,8 @@ jobs:
         run: gradle :app:assembleDebug
         working-directory: /home/runner/work/Soul---Ai/Soul---Ai
 
-      - name: Upload APK
+      - name: Find and Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: "/home/runner/work/Soul---Ai/Soul---Ai/app/build/outputs/apk/debug/*.apk"
-          
+          path: /home/runner/work/Soul---Ai/Soul---Ai/app/build/outputs/apk/debug/app-debug.apk
