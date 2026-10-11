@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.SoulAI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#7C3AED</item>
+        <item name="colorPrimaryVariant">#5B21B6</item>
+        <item name="colorSecondary">#06B6D4</item>
+        <item name="android:statusBarColor">#090B14</item>
+        <item name="android:navigationBarColor">#090B14</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
