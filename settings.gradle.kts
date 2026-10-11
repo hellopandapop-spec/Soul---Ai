@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Soul-AI"
+rootProject.name = "Soul---B"
 include(":app")
